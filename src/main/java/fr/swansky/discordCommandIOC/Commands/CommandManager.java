@@ -52,12 +52,12 @@ public class CommandManager {
         if (object[0] == null) return false;
         try {
             EventHandler preCommandEvent = this.main.getDiscordCommandIOCConfig().getPreCommandEvent();
-            if (preCommandEvent != null) {
-                if (preCommandEvent.execute(user, command, message))
+            if (preCommandEvent != null && !preCommandEvent.execute(user, command, message)) {
                     return false;
             }
 
             execute(((SimpleCommand) object[0]), command, (String[]) object[1], message);
+
             EventHandler postCommandEvent = this.main.getDiscordCommandIOCConfig().getPostCommandEvent();
             if (postCommandEvent != null) {
                 postCommandEvent.execute(user, command, message);
