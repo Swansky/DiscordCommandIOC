@@ -1,4 +1,4 @@
-#Discord Command IOC 
+# Discord Command IOC 
 
 Learning project! 
 
@@ -39,8 +39,7 @@ DiscordCommandIOC.getCommandManager().commandUser(user,"test",message);
 
 all parameters of command method will be auto-inject
 
-## by default, all these types are supported:
-
+by default, all these types are supported:
 - String[] = args command
 - User = user realizes the command
 - TextChannel = channel were the command is made
