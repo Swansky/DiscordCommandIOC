@@ -1,6 +1,12 @@
 # Discord Command IOC 
 
-Learning project! 
+
+Learning project!
+
+### [Project example](https://github.com/Swansky/ExampleCommandManagerIOCExtension)
+
+
+
 
 Simple commands manager for discord 
 
