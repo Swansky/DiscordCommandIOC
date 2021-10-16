@@ -1,5 +1,6 @@
 package fr.swansky.discordCommandIOC.config;
 
+import fr.swansky.discordCommandIOC.Commands.EventHandler;
 import fr.swansky.swansAPI.config.ConfigExtension;
 
 import java.util.ArrayList;
@@ -8,7 +9,8 @@ import java.util.List;
 public class DiscordCommandIOCConfig implements ConfigExtension {
     // List of object for to inject to command in CommandManager.java
     private final List<Object> objectsToAutoInjects = new ArrayList<>();
-
+    private EventHandler preCommandEvent;
+    private EventHandler postCommandEvent;
     @Override
     public Class<? extends ConfigExtension> getConfigClass() {
         return this.getClass();
@@ -31,5 +33,21 @@ public class DiscordCommandIOCConfig implements ConfigExtension {
             }
         }
         return null;
+    }
+
+    public EventHandler getPreCommandEvent() {
+        return preCommandEvent;
+    }
+
+    public void setPreCommandEvent(EventHandler preCommandEvent) {
+        this.preCommandEvent = preCommandEvent;
+    }
+
+    public EventHandler getPostCommandEvent() {
+        return postCommandEvent;
+    }
+
+    public void setPostCommandEvent(EventHandler postCommandEvent) {
+        this.postCommandEvent = postCommandEvent;
     }
 }

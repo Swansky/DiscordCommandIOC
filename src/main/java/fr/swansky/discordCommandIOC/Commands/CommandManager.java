@@ -51,7 +51,17 @@ public class CommandManager {
         Object[] object = getCommand(command);
         if (object[0] == null) return false;
         try {
+            EventHandler preCommandEvent = this.main.getDiscordCommandIOCConfig().getPreCommandEvent();
+            if (preCommandEvent != null) {
+                if (preCommandEvent.execute(user, command, message))
+                    return false;
+            }
+
             execute(((SimpleCommand) object[0]), command, (String[]) object[1], message);
+            EventHandler postCommandEvent = this.main.getDiscordCommandIOCConfig().getPostCommandEvent();
+            if (postCommandEvent != null) {
+                postCommandEvent.execute(user, command, message);
+            }
         } catch (Exception exception) {
             logger.error("La methode " + ((SimpleCommand) object[0]).getMethod().getName() + " n'est pas correctement initialisé.");
             exception.printStackTrace();
@@ -87,10 +97,8 @@ public class CommandManager {
             else if (parameters[i].getType() == Guild.class) objects[i] = message == null ? null : message.getGuild();
             else if (parameters[i].getType() == String.class) objects[i] = command;
             else if (parameters[i].getType() == Message.class) objects[i] = message;
-                // else if(parameters[i].getType() == JDA.class) objects[i] = swansBot.getJda();
             else if (parameters[i].getType() == MessageChannel.class)
                 objects[i] = message == null ? null : message.getChannel();
-            // else if(parameters[i].getType() == SwansBot.class) objects[i] = swansBot;
             Object objectFromClass = discordCommandIOCConfig.getObjectFromClass(parameters[i].getType());
             if (objectFromClass != null) {
                 objects[i] = objectFromClass;
