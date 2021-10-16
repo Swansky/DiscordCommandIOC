@@ -2,6 +2,7 @@ package fr.swansky.discordCommandIOC.Commands;
 
 import fr.swansky.discordCommandIOC.Commands.annotations.Command;
 import fr.swansky.discordCommandIOC.Commands.annotations.CommandsContainer;
+import fr.swansky.discordCommandIOC.Commands.defaultCommands.HelpCommand;
 import fr.swansky.discordCommandIOC.DiscordCommandIOC;
 import fr.swansky.discordCommandIOC.config.DiscordCommandIOCConfig;
 import fr.swansky.swansAPI.exception.InstanceCreationException;
@@ -22,6 +23,7 @@ public class CommandManager {
     public CommandManager(DiscordCommandIOC main) throws InstanceCreationException {
         this.main = main;
         registerCommands();
+        registerCommand(new HelpCommand());
     }
 
     private void registerCommands() throws InstanceCreationException {
