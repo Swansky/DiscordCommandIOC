@@ -23,7 +23,7 @@ public class CommandManager {
 
     public CommandManager(DiscordCommandIOC main) throws InstanceCreationException {
         this.main = main;
-        this.discordCommandIOCConfig = main.getDiscordCommandIOCConfig().get();
+        this.discordCommandIOCConfig = main.getDiscordCommandIOCConfig();
         registerCommands();
         registerCommand(new HelpCommand());
     }

@@ -37,7 +37,7 @@ public class DiscordCommandIOC extends FrameworkExtension {
 
     }
 
-    public Optional<DiscordCommandIOCConfig> getDiscordCommandIOCConfig() {
-        return Optional.ofNullable(discordCommandIOCConfig);
+    public DiscordCommandIOCConfig getDiscordCommandIOCConfig() {
+        return discordCommandIOCConfig;
     }
 }
