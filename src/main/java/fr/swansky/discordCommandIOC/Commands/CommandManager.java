@@ -19,9 +19,11 @@ public class CommandManager {
     private final DiscordCommandIOC main;
     private final Map<String, SimpleCommand> commands = new HashMap<>();
     private final Logger logger = LoggerFactory.getLogger(CommandManager.class);
+    private final DiscordCommandIOCConfig discordCommandIOCConfig;
 
     public CommandManager(DiscordCommandIOC main) throws InstanceCreationException {
         this.main = main;
+        this.discordCommandIOCConfig = main.getDiscordCommandIOCConfig().get();
         registerCommands();
         registerCommand(new HelpCommand());
     }
@@ -53,17 +55,20 @@ public class CommandManager {
         Object[] object = getCommand(command);
         if (object[0] == null) return false;
         try {
-            EventHandler preCommandEvent = this.main.getDiscordCommandIOCConfig().getPreCommandEvent();
-            if (preCommandEvent != null && !preCommandEvent.execute(user, command, message)) {
+            if (discordCommandIOCConfig != null) {
+                EventHandler preCommandEvent = discordCommandIOCConfig.getPreCommandEvent();
+                if (preCommandEvent != null && !preCommandEvent.execute(user, command, message)) {
                     return false;
+                }
             }
-
             execute(((SimpleCommand) object[0]), command, (String[]) object[1], message);
-
-            EventHandler postCommandEvent = this.main.getDiscordCommandIOCConfig().getPostCommandEvent();
-            if (postCommandEvent != null) {
-                postCommandEvent.execute(user, command, message);
+            if (discordCommandIOCConfig != null) {
+                EventHandler postCommandEvent = discordCommandIOCConfig.getPostCommandEvent();
+                if (postCommandEvent != null) {
+                    postCommandEvent.execute(user, command, message);
+                }
             }
+
         } catch (Exception exception) {
             logger.error("La methode " + ((SimpleCommand) object[0]).getMethod().getName() + " n'est pas correctement initialisé.");
             exception.printStackTrace();
@@ -88,7 +93,6 @@ public class CommandManager {
     private void execute(SimpleCommand simpleCommand, String command, String[] args, Message message) throws Exception {
         Parameter[] parameters = simpleCommand.getMethod().getParameters();
         Object[] objects = new Object[parameters.length];
-        DiscordCommandIOCConfig discordCommandIOCConfig = main.getDiscordCommandIOCConfig();
         for (int i = 0; i < parameters.length; i++) {
             if (parameters[i].getType() == String[].class) objects[i] = args;
             else if (parameters[i].getType() == User.class) objects[i] = message == null ? null : message.getAuthor();
@@ -101,9 +105,11 @@ public class CommandManager {
             else if (parameters[i].getType() == Message.class) objects[i] = message;
             else if (parameters[i].getType() == MessageChannel.class)
                 objects[i] = message == null ? null : message.getChannel();
-            Object objectFromClass = discordCommandIOCConfig.getObjectFromClass(parameters[i].getType());
-            if (objectFromClass != null) {
-                objects[i] = objectFromClass;
+            if (discordCommandIOCConfig != null) {
+                Object objectFromClass = discordCommandIOCConfig.getObjectFromClass(parameters[i].getType());
+                if (objectFromClass != null) {
+                    objects[i] = objectFromClass;
+                }
             }
         }
 

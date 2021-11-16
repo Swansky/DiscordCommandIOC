@@ -5,6 +5,8 @@ import fr.swansky.discordCommandIOC.config.DiscordCommandIOCConfig;
 import fr.swansky.swansAPI.exception.InstanceCreationException;
 import fr.swansky.swansAPI.extensions.FrameworkExtension;
 
+import java.util.Optional;
+
 public class DiscordCommandIOC extends FrameworkExtension {
     private static DiscordCommandIOC INSTANCE;
     private static CommandManager COMMAND_MANAGER;
@@ -35,7 +37,7 @@ public class DiscordCommandIOC extends FrameworkExtension {
 
     }
 
-    public DiscordCommandIOCConfig getDiscordCommandIOCConfig() {
-        return discordCommandIOCConfig;
+    public Optional<DiscordCommandIOCConfig> getDiscordCommandIOCConfig() {
+        return Optional.ofNullable(discordCommandIOCConfig);
     }
 }

@@ -6,7 +6,7 @@
 
     <groupId>fr.swansky</groupId>
     <artifactId>DiscordCommandIOC</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -17,6 +17,11 @@
             <id>dv8tion</id>
             <name>m2-dv8tion</name>
             <url>https://m2.dv8tion.net/releases</url>
+        </repository>
+        <repository>
+            <id>maven-zoltowski</id>
+            <name>zoltowski Repository</name>
+            <url>https://maven.zoltowski.fr/releases</url>
         </repository>
     </repositories>
     <dependencies>
@@ -31,4 +36,11 @@
             <version>4.3.0_334</version>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>maven-zoltowski</id>
+            <url>https://maven.zoltowski.fr/releases</url>
+        </repository>
+    </distributionManagement>
 </project>
