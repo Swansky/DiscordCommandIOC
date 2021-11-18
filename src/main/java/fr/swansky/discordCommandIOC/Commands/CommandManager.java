@@ -25,7 +25,8 @@ public class CommandManager {
         this.main = main;
         this.discordCommandIOCConfig = main.getDiscordCommandIOCConfig();
         registerCommands();
-        registerCommand(new HelpCommand());
+        if (!discordCommandIOCConfig.isDisableDefaultHelpCommand())
+            registerCommand(new HelpCommand());
     }
 
     private void registerCommands() throws InstanceCreationException {

@@ -11,6 +11,7 @@ public class DiscordCommandIOCConfig implements ConfigExtension {
     private final List<Object> objectsToAutoInjects = new ArrayList<>();
     private EventHandler preCommandEvent;
     private EventHandler postCommandEvent;
+    private boolean disableDefaultHelpCommand = false;
     @Override
     public Class<? extends ConfigExtension> getConfigClass() {
         return this.getClass();
@@ -49,5 +50,13 @@ public class DiscordCommandIOCConfig implements ConfigExtension {
 
     public void setPostCommandEvent(EventHandler postCommandEvent) {
         this.postCommandEvent = postCommandEvent;
+    }
+
+    public boolean isDisableDefaultHelpCommand() {
+        return disableDefaultHelpCommand;
+    }
+
+    public void setDisableDefaultHelpCommand(boolean disableDefaultHelpCommand) {
+        this.disableDefaultHelpCommand = disableDefaultHelpCommand;
     }
 }
