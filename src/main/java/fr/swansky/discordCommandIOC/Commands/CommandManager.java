@@ -5,11 +5,11 @@ import fr.swansky.discordCommandIOC.Commands.annotations.CommandsContainer;
 import fr.swansky.discordCommandIOC.Commands.defaultCommands.HelpCommand;
 import fr.swansky.discordCommandIOC.DiscordCommandIOC;
 import fr.swansky.discordCommandIOC.config.DiscordCommandIOCConfig;
-import fr.swansky.swansAPI.exception.InstanceCreationException;
-import fr.swansky.swansAPI.models.ScannedClassDetails;
 import net.dv8tion.jda.api.entities.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import swansAPI.exception.InstanceCreationException;
+import swansAPI.models.ScannedClassDetails;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
@@ -116,4 +116,6 @@ public class CommandManager {
 
         simpleCommand.getMethod().invoke(simpleCommand.getObject(), objects);
     }
+
+
 }

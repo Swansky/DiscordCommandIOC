@@ -1,7 +1,7 @@
 package fr.swansky.discordCommandIOC.config;
 
 import fr.swansky.discordCommandIOC.Commands.EventHandler;
-import fr.swansky.swansAPI.config.ConfigExtension;
+import swansAPI.config.ConfigExtension;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,7 @@ public class DiscordCommandIOCConfig implements ConfigExtension {
     private EventHandler preCommandEvent;
     private EventHandler postCommandEvent;
     private boolean disableDefaultHelpCommand = false;
+
     @Override
     public Class<? extends ConfigExtension> getConfigClass() {
         return this.getClass();

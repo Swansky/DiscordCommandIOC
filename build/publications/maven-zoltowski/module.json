@@ -1,0 +1,76 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "fr.swansky",
+    "module": "DiscordCommandIOC",
+    "version": "1.0.7",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "7.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "DiscordCommandIOC-1.0.7.jar",
+          "url": "DiscordCommandIOC-1.0.7.jar",
+          "size": 11687,
+          "sha512": "25dd1a2e10251c2e62ec96a1f22da7dc2ba3024c4527f145abe96022175da7f69fb1d4f7f8c2903bcdfc580644449229578091df987ab1fd849cfec1a9669fb0",
+          "sha256": "6ba2ed686949798c4cbab331e396c50dbaa26635b5f60b6363c51743600108b4",
+          "sha1": "4747a99c6b0d2209c19868b598092c5cf0b4cc72",
+          "md5": "646b1821656014a5219f737d69d37531"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "fr.swansky",
+          "module": "SwansAPI",
+          "version": {
+            "requires": "1.0.3"
+          }
+        },
+        {
+          "group": "net.dv8tion",
+          "module": "JDA",
+          "version": {
+            "requires": "4.3.0_334"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "DiscordCommandIOC-1.0.7.jar",
+          "url": "DiscordCommandIOC-1.0.7.jar",
+          "size": 11687,
+          "sha512": "25dd1a2e10251c2e62ec96a1f22da7dc2ba3024c4527f145abe96022175da7f69fb1d4f7f8c2903bcdfc580644449229578091df987ab1fd849cfec1a9669fb0",
+          "sha256": "6ba2ed686949798c4cbab331e396c50dbaa26635b5f60b6363c51743600108b4",
+          "sha1": "4747a99c6b0d2209c19868b598092c5cf0b4cc72",
+          "md5": "646b1821656014a5219f737d69d37531"
+        }
+      ]
+    }
+  ]
+}
