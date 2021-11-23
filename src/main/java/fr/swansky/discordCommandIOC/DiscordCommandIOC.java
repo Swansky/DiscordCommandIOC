@@ -2,8 +2,8 @@ package fr.swansky.discordCommandIOC;
 
 import fr.swansky.discordCommandIOC.Commands.CommandManager;
 import fr.swansky.discordCommandIOC.config.DiscordCommandIOCConfig;
-import swansAPI.exception.InstanceCreationException;
-import swansAPI.extensions.FrameworkExtension;
+import fr.swansky.swansAPI.exception.InstanceCreationException;
+import fr.swansky.swansAPI.extensions.FrameworkExtension;
 
 public class DiscordCommandIOC extends FrameworkExtension {
     private static DiscordCommandIOC INSTANCE;

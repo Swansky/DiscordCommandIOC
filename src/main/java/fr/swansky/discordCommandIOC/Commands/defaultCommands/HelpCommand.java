@@ -13,7 +13,7 @@ import net.dv8tion.jda.internal.entities.UserImpl;
 import java.awt.*;
 import java.util.Collection;
 
-@CommandsContainer
+
 public class HelpCommand {
 
 

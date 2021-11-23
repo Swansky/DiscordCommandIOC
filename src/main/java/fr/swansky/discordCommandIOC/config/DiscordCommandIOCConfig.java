@@ -1,7 +1,7 @@
 package fr.swansky.discordCommandIOC.config;
 
 import fr.swansky.discordCommandIOC.Commands.EventHandler;
-import swansAPI.config.ConfigExtension;
+import fr.swansky.swansAPI.config.ConfigExtension;
 
 import java.util.ArrayList;
 import java.util.List;
